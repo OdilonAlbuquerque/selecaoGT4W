@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gtDBModelStoreContainer" CdmEntityContainer="gtDBEntities1">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="gtDBModel.Cliente">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="ClienteUF" ColumnName="ClienteUF" />
+          <ScalarProperty Name="ClientePeso" ColumnName="ClientePeso" />
+          <ScalarProperty Name="ClienteNascimento" ColumnName="ClienteNascimento" />
+          <ScalarProperty Name="ClienteCPF" ColumnName="ClienteCPF" />
+          <ScalarProperty Name="ClienteNome" ColumnName="ClienteNome" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="gtDBModel.Estado">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="EstadoSigla" ColumnName="EstadoSigla" />
+          <ScalarProperty Name="EstadoNome" ColumnName="EstadoNome" />
+          <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_Clientes">
+      <EntityTypeMapping TypeName="gtDBModel.VW_Clientes">
+        <MappingFragment StoreEntitySet="VW_Clientes">
+          <ScalarProperty Name="ClienteUF" ColumnName="ClienteUF" />
+          <ScalarProperty Name="ClientePeso" ColumnName="ClientePeso" />
+          <ScalarProperty Name="ClienteNascimento" ColumnName="ClienteNascimento" />
+          <ScalarProperty Name="ClienteCPF" ColumnName="ClienteCPF" />
+          <ScalarProperty Name="ClienteNome" ColumnName="ClienteNome" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

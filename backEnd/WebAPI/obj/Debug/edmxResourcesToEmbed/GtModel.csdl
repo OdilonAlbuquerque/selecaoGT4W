@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gtDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="gtDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="gtDBModel.Cliente" />
+    <EntitySet Name="Estados" EntityType="gtDBModel.Estado" />
+    <EntitySet Name="VW_Clientes" EntityType="gtDBModel.VW_Clientes" />
+  </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+    </Key>
+    <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteNome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClienteCPF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClienteNascimento" Type="DateTime" Precision="0" />
+    <Property Name="ClientePeso" Type="Decimal" Precision="15" Scale="2" />
+    <Property Name="ClienteUF" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="EstadoID" />
+    </Key>
+    <Property Name="EstadoID" Type="Int32" Nullable="false" />
+    <Property Name="EstadoNome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoSigla" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_Clientes">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+      <PropertyRef Name="ClienteNome" />
+      <PropertyRef Name="ClienteCPF" />
+    </Key>
+    <Property Name="ClienteID" Type="Int32" Nullable="false" />
+    <Property Name="ClienteNome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClienteCPF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClienteNascimento" Type="DateTime" Precision="0" />
+    <Property Name="ClientePeso" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="ClienteUF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

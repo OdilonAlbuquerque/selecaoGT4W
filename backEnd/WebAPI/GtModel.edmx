@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gtDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteNome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClienteCPF" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClienteNascimento" Type="date" />
+          <Property Name="ClientePeso" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ClienteUF" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="int" Nullable="false" />
+          <Property Name="EstadoNome" Type="varchar" MaxLength="255" />
+          <Property Name="EstadoSigla" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gtDB.dbo.VW_Clientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="ClienteNome" />
+            <PropertyRef Name="ClienteCPF" />
+          </Key>
+          <Property Name="ClienteID" Type="int" Nullable="false" />
+          <Property Name="ClienteNome" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClienteCPF" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClienteNascimento" Type="date" />
+          <Property Name="ClientePeso" Type="varchar" MaxLength="8000" />
+          <Property Name="ClienteUF" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="gtDBModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_Clientes" EntityType="Self.VW_Clientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_Clientes].[ClienteID] AS [ClienteID], 
+    [VW_Clientes].[ClienteNome] AS [ClienteNome], 
+    [VW_Clientes].[ClienteCPF] AS [ClienteCPF], 
+    [VW_Clientes].[ClienteNascimento] AS [ClienteNascimento], 
+    [VW_Clientes].[ClientePeso] AS [ClientePeso], 
+    [VW_Clientes].[ClienteUF] AS [ClienteUF]
+    FROM [dbo].[VW_Clientes] AS [VW_Clientes]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gtDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="gtDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="gtDBModel.Cliente" />
+          <EntitySet Name="Estados" EntityType="gtDBModel.Estado" />
+          <EntitySet Name="VW_Clientes" EntityType="gtDBModel.VW_Clientes" />
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteNome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClienteCPF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClienteNascimento" Type="DateTime" Precision="0" />
+          <Property Name="ClientePeso" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ClienteUF" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="EstadoID" />
+          </Key>
+          <Property Name="EstadoID" Type="Int32" Nullable="false" />
+          <Property Name="EstadoNome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoSigla" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VW_Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+            <PropertyRef Name="ClienteNome" />
+            <PropertyRef Name="ClienteCPF" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" />
+          <Property Name="ClienteNome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClienteCPF" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClienteNascimento" Type="DateTime" Precision="0" />
+          <Property Name="ClientePeso" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="ClienteUF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gtDBModelStoreContainer" CdmEntityContainer="gtDBEntities1">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="gtDBModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ClienteUF" ColumnName="ClienteUF" />
+                <ScalarProperty Name="ClientePeso" ColumnName="ClientePeso" />
+                <ScalarProperty Name="ClienteNascimento" ColumnName="ClienteNascimento" />
+                <ScalarProperty Name="ClienteCPF" ColumnName="ClienteCPF" />
+                <ScalarProperty Name="ClienteNome" ColumnName="ClienteNome" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="gtDBModel.Estado">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="EstadoSigla" ColumnName="EstadoSigla" />
+                <ScalarProperty Name="EstadoNome" ColumnName="EstadoNome" />
+                <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_Clientes">
+            <EntityTypeMapping TypeName="gtDBModel.VW_Clientes">
+              <MappingFragment StoreEntitySet="VW_Clientes">
+                <ScalarProperty Name="ClienteUF" ColumnName="ClienteUF" />
+                <ScalarProperty Name="ClientePeso" ColumnName="ClientePeso" />
+                <ScalarProperty Name="ClienteNascimento" ColumnName="ClienteNascimento" />
+                <ScalarProperty Name="ClienteCPF" ColumnName="ClienteCPF" />
+                <ScalarProperty Name="ClienteNome" ColumnName="ClienteNome" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

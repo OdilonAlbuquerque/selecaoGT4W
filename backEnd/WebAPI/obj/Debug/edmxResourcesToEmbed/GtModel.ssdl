@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gtDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+    </Key>
+    <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteNome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClienteCPF" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClienteNascimento" Type="date" />
+    <Property Name="ClientePeso" Type="decimal" Precision="15" Scale="2" />
+    <Property Name="ClienteUF" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="EstadoID" />
+    </Key>
+    <Property Name="EstadoID" Type="int" Nullable="false" />
+    <Property Name="EstadoNome" Type="varchar" MaxLength="255" />
+    <Property Name="EstadoSigla" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'gtDB.dbo.VW_Clientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_Clientes">
+    <Key>
+      <PropertyRef Name="ClienteID" />
+      <PropertyRef Name="ClienteNome" />
+      <PropertyRef Name="ClienteCPF" />
+    </Key>
+    <Property Name="ClienteID" Type="int" Nullable="false" />
+    <Property Name="ClienteNome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClienteCPF" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClienteNascimento" Type="date" />
+    <Property Name="ClientePeso" Type="varchar" MaxLength="8000" />
+    <Property Name="ClienteUF" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityContainer Name="gtDBModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VW_Clientes" EntityType="Self.VW_Clientes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_Clientes].[ClienteID] AS [ClienteID], 
+    [VW_Clientes].[ClienteNome] AS [ClienteNome], 
+    [VW_Clientes].[ClienteCPF] AS [ClienteCPF], 
+    [VW_Clientes].[ClienteNascimento] AS [ClienteNascimento], 
+    [VW_Clientes].[ClientePeso] AS [ClientePeso], 
+    [VW_Clientes].[ClienteUF] AS [ClienteUF]
+    FROM [dbo].[VW_Clientes] AS [VW_Clientes]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
