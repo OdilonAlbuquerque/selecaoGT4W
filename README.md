@@ -6,11 +6,14 @@ O projeto está publicado em: https://top-level-grip.000webhostapp.com/
 Foi utilizado o framework Vue.JS e Bootstrap 4
 
 Instalação:
-Pre-requisito: Node.js
+Pré-requisito: Node.js
 
 Navegar até a pasta (frontApi) do projeto e utilizar o NPM para rodar: npm run serve
-Para preparar o pojeto para a publicação, que será gerado na pasta DIST: npm run build
+Para preparar o pojeto para a publicação, que será gerado na pasta dist: npm run build
 
+OBS: No arquivo ~\frontEnd\src\services\config.js, fica a configuração do endereço da API (IBGE e Back-end). 
+
+OBS2: A seleção da UF é carregado dinamicamente da API do IBGE.
 
 # Back-end
 Desenvolvido em Asp.net C# e banco de dados SQL Server hospedado em nuvem (Azure), na pasta DB possui o script de criação do banco de dados.
