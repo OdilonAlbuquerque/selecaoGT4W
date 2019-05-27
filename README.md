@@ -18,6 +18,6 @@ OBS2: A seleção da UF é carregado dinamicamente da API do IBGE.
 # Back-end
 Desenvolvido em Asp.net C# e banco de dados SQL Server hospedado em nuvem (Azure), na pasta DB possui o script de criação do banco de dados.
 
-OBS: No arquivo ~\backEnd\WebAPI\Web.config fica a <connectionStrings> com a configuração de conexão com o banco de dados.
+OBS: No arquivo ~\backEnd\WebAPI\Web.config fica a connectionStrings com a configuração de conexão com o banco de dados.
 
 A api está publicada no endereço: https://gtapiweb.azurewebsites.net/api/Clientes
